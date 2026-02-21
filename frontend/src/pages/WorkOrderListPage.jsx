@@ -51,7 +51,7 @@ export default function WorkOrderListPage({select}) {
               <td>{o.serial_number}</td>
               <td>{o.status}</td>
               <td>{o.technical_report || "-"}</td>
-              <td>{o.amount != null ? o.amount : "-"}</td>
+              <td>${o.amount != null ? o.amount : "-"}</td>
             </tr>
           ))}
         </tbody>
