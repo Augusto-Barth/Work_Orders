@@ -69,6 +69,8 @@ def add_report(id: int, data: TechnicalReport, db: Session = Depends(get_db)):
 
     db.commit()
 
+    notify_role( db, Role.COMMERCIAL, wo.id, "TECH_REPORT_ADDED", f"Technical report added to {wo.internal_id}" )
+
 @router.post("/{id}/amount")
 def add_amount(id: int, data: AmountCreate, db: Session = Depends(get_db)):
 
@@ -94,6 +96,10 @@ def add_amount(id: int, data: AmountCreate, db: Session = Depends(get_db)):
 
     db.commit()
 
+    notify_role( db, Role.TECHNICIAN, wo.id, "AMOUNT_ADDED", f"Amount added to {wo.internal_id}" )
+
+    return wo
+
 
 @router.post("/{id}/finish")
 def finish_order(id: int, data: FinishOrder, db: Session = Depends(get_db)):
@@ -118,3 +124,7 @@ def finish_order(id: int, data: FinishOrder, db: Session = Depends(get_db)):
     wo.status = Status.DONE
 
     db.commit()
+
+    notify_all( db, wo.id, "ORDER_DONE", f"Work order {wo.internal_id} completed" )
+
+    return wo
