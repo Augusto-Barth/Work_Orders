@@ -11,7 +11,7 @@ interface.
 ## 1. Clone the Repository
 
 ``` bash
-git clone <repository_url>
+git clone https://github.com/Augusto-Barth/Work_Orders
 cd Work_Orders
 ```
 
@@ -129,14 +129,14 @@ objects to tables.
 
 Notifications are stored in a table with the following structure:
 
-  Column          Description
-  --------------- ------------------------------------------------------
-  id              Unique identifier
-  work_order_id   Associated work order
-  type            Notification type
-  user_id         Target user
-  read            Boolean indicating whether the notification was read
-  text            Notification message
+| Column        | Description                                              |
+|---------------|----------------------------------------------------------|
+| id            | Unique identifier                                        |
+| work_order_id | Associated work order                                    |
+| type          | Notification type                                        |
+| user_id       | Target user                                              |
+| read          | Boolean indicating whether the notification was read     |
+| text          | Notification message                                     |
 
 Unread notifications appear in the frontend dropdown while read
 notifications are hidden.
